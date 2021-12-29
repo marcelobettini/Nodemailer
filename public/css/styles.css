@@ -9,7 +9,8 @@ body {
 }
 header {
   margin-top: 2em;
-  font-size: xx-large;
+  font-size: x-large;
+  text-align: center;
 }
 
 .container {
