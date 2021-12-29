@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <title>Mails con Node</title>
+</head>
+
+<body class="container">
+    <header>
+        <h1>API envío de mails</h1>
+    </header>
+    <main>
+        <section>
+            <form action="/index" method="POST">
+                <label for="name" hidden>ingrese nombre</label>
+                <input type="text" id="name" name="name" placeholder="nombre..." autofocus>
+                <label for="lastName" hidden>ingrese apellido</label>
+                <input type="text" id="lastName" name="lastName" placeholder="apellido...">
+                <label for="email" hidden>ingrese email</label>
+                <input type="email" name="email" id="email" placeholder="email...">
+                <label for="message" hidden>ingrese mensaje</label>
+                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                {{message}}
+                <input type="submit" value="enviar">
+            </form>
+        </section>
+    </main>
+
+    {{>footer}}
+</body>
+
+</html>
