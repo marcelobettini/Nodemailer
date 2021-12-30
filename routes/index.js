@@ -9,19 +9,29 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
+const validationRules = [
+  body("name", "Debe ingresar su nombre").exists().isLength({ min: 2 }),
+  body("lastName", "Debe ingresar su apellido").exists().isLength({ min: 2 }),
+  body("email", "Debe ingresar un email válido").exists().isEmail(),
+  body("message", "Mensaje debe contener entre 10 y 300 caracteres")
+    .exists()
+    .trim()
+    .isLength({ min: 10, max: 300 }),
+];
 /*POST*/
 /*Las validaciones se aplican a través de un middleware que provee express-validator*/
 router.post(
   "/",
-  [
-    body("name", "Debe ingresar su nombre").exists().isLength({ min: 2 }),
-    body("lastName", "Debe ingresar su apellido").exists().isLength({ min: 2 }),
-    body("email", "Debe ingresar un email válido").exists().isEmail(),
-    body("message", "Mensaje debe contener entre 10 y 300 caracteres")
-      .exists()
-      .trim()
-      .isLength({ min: 10, max: 300 }),
-  ],
+  // [
+  //   body("name", "Debe ingresar su nombre").exists().isLength({ min: 2 }),
+  //   body("lastName", "Debe ingresar su apellido").exists().isLength({ min: 2 }),
+  //   body("email", "Debe ingresar un email válido").exists().isEmail(),
+  //   body("message", "Mensaje debe contener entre 10 y 300 caracteres")
+  //     .exists()
+  //     .trim()
+  //     .isLength({ min: 10, max: 300 }),
+  // ],
+  validationRules,
 
   /*terminado el middleware, comienza el callback con los params req y res */
   (req, res) => {
