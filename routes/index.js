@@ -34,7 +34,7 @@ router.post(
   validationRules,
 
   /*terminado el middleware, comienza el callback con los params req y res */
-  (req, res) => {
+  async (req, res) => {
     /* Encontramos los errores de validación en la request y los envolvemos en un objeto con
     funciones muy útiles que también provee express-validator*/
     const errors = validationResult(req);
@@ -62,10 +62,14 @@ router.post(
         },
       });
 
-      transport.sendMail(emailMsg);
-      res.render("index", {
-        message: "mensaje enviado",
-      });
+      const sendMAilStatus = await transport.sendMail(emailMsg);
+      let sendMessage = "";
+      if (sendMAilStatus.rejected.length) {
+        sendMessage = "No pudimos enviar. 😞 Intente de nuevo";
+      } else {
+        sendMessage = "mensaje enviado 👌";
+      }
+      res.render("index", { sendMessage });
     }
   }
 );
