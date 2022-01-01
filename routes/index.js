@@ -1,4 +1,5 @@
 "use strict";
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
@@ -54,11 +55,11 @@ router.post(
       };
 
       const transport = nodemailer.createTransport({
-        host: process.env.HOST,
+         host: process.env.HOST,
         port: process.env.PORT,
         auth: {
-          user: process.env.USER,
-          pass: process.env.PASS,
+          user: process.env.MAILTRAP_USER, //"USER" CONFLICT WITH MAC
+          pass: process.env.MAILTRAP_PASS,
         },
       });
 

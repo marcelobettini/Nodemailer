@@ -22,11 +22,11 @@ header {
 }
 
 form {
-  display: flex;
+ display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  border-radius: 2.5%;
+  align-items: center; 
+ border-radius: 2.5%;
   width: 600px;
   min-height: 400px;
   padding: 2em 0;
@@ -55,7 +55,7 @@ textarea {
   font-size: 1.2rem;
   width: 400px;
 }
-
+textarea {resize: none;}
 input[type="submit"] {
   background: rgb(95, 158, 160);
 }
