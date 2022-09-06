@@ -11,6 +11,15 @@ app.use(express.urlencoded({ extended: false }));
 
 const hbs = require("hbs");
 hbs.registerPartials(path.join(__dirname, "./views/partials"));
+hbs.registerHelper("errName", (arrWarnings, name) => {
+  if (name) {
+    return name
+  } else {
+    const nameErr = arrWarnings.filter(el => el.param === 'name')
+    return nameErr[0].msg
+  }
+})
+
 app.use(express.static(path.join(__dirname, "./public")));
 
 app.set("view engine", "hbs");
